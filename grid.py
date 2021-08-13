@@ -8,7 +8,7 @@ of the arms. The range is from (-half the dimension, half the dimension) for eac
 The grid is uneven, meaning there are more coordinates surrounding obstacles implemented into the grid.
 The width of the finer mesh and the distance of the mesh from each obstacle can be
 altered with the step and the distanceFromObject parameters included in the
-add_obstacle function.
+create_obstacle function.
 """
 
 class Grid():
