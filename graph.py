@@ -1,25 +1,5 @@
+import math as math
 import numpy as np
-
-
-class Node():
-    """
-    A singular node in the graph. Requires three values in the tuple.
-
-    Parameters:
-    coord = tuple of x, y, and z coordinates
-    """
-    def __init__(self, coord):
-        if len(coord) != 3:
-            raise IndexError("The length of the coordinate is not 3.")
-        self._coord = coord
-   
-    def __repr__(self):
-        return repr("Node" + str(self._coord))
-
-    @property
-    def coord(self):
-        return self._coord
-   
 
 
 class Edge():
@@ -52,13 +32,16 @@ class Graph():
     def __init__(self):
         self._nodes_list = set()
         self._edges_list = {}
-        self._node_locations = {}
+        self.node_g_rhs = {}
 
-    def add_node(self, node):
+    def add_node(self, coord):
         # Adds node to the list of all nodes
-        self._nodes_list.add(node)
-        self._node_locations[node.coord] = node
+        self._nodes_list.add(coord)
+        self.node_g_rhs[coord] = [float('inf'), float('inf')]
     
+    def get_all_nodes(self):
+        return self._nodes_list
+
     def add_edge(self, source, end):
         """
         Adds a bidirectional edge given two nodes.
@@ -72,8 +55,8 @@ class Graph():
         end_edges = self._edges_list.get(end, set())
         
         # Calculating distance between two of the nodes
-        x1, y1, z1 = source.coord
-        x2, y2, z2 = end.coord
+        x1, y1, z1 = source
+        x2, y2, z2 = end
 
         weight = np.sqrt((x1-x2)**2 + (y1-y2)**2 + (z1-z2)**2)
 
@@ -89,7 +72,7 @@ class Graph():
     
 
     def get_neighbor_edges(self, node):
-        # Retrieves edges coming from a Node
+        # Retrieves edges coming from a node
         if not node in self._nodes_list:
             raise ValueError("Node is not present in the graph.")
         return self._edges_list.get(node, set())
