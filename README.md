@@ -1,6 +1,6 @@
 # Gantry-Path-Planning
 
-Path planning code for the MATRIX project. Utilizes D* Lite based on Koenig, S. and Likhachev, M.'s paper **D* Lite**, 2002 to path plan through the space.
+Path planning code for the MATRIX project. Utilizes D* Lite based on Koenig, S. and Likhachev, M.'s paper **__D* Lite__**, 2002 to path plan through the space.
 
 [Link to paper](http://idm-lab.org/bib/abstracts/papers/aaai02b.pdf)
 
